@@ -22,7 +22,22 @@ export const startBottomTabs = () => {
   Navigation.setRoot({
     root: {
       bottomTabs: {
-        children: [setBottomTab(Screens.HOME), setBottomTab(Screens.SEARCH), setBottomTab(Screens.PROFILE)],
+        children: [
+          setBottomTab(Screens.HOME, require('~/assets/home.png')),
+          setBottomTab(Screens.SEARCH, require('~/assets/search.png')),
+          setBottomTab(Screens.PROFILE, require('~/assets/user.png')),
+        ],
+        options: {
+          bottomTabs: {
+            backgroundColor: '#07182b',
+            currentTabIndex: 0,
+            animate: false,
+            hideShadow: false,
+            titleDisplayMode: 'alwaysHide',
+            elevation: 50,
+            preferLargeIcons: true,
+          },
+        },
       },
     },
   });
@@ -33,8 +48,11 @@ const setBottomTab = (nameTab, icon) => ({
     name: nameTab,
     options: {
       bottomTab: {
-        text: nameTab,
         icon,
+        iconColor: 'white',
+        selectedIconColor: 'yellow',
+        iconWidth: 30,
+        iconHeight: 30,
       },
     },
   },
