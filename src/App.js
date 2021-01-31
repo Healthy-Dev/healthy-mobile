@@ -1,33 +1,11 @@
-import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
-import Button from '~/components/common/Button';
-import { Colors } from '~/constants/colors';
+import { registerSreens, setDefaultOptions, startOnboardingScreen } from './navigation';
 
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
-          <Text>Healthy app</Text>
-          <Button onPress={() => console.log('click')} title="Continuar" />
-        </View>
-      </SafeAreaView>
-    </>
-  );
-};
+registerSreens();
 
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  container: {
-    alignItems: 'center',
-    backgroundColor: Colors.WHITE,
-  },
+setDefaultOptions();
+
+Navigation.events().registerAppLaunchedListener(() => {
+  startOnboardingScreen();
 });
-
-export default App;
