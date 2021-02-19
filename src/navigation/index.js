@@ -1,5 +1,6 @@
 import { Navigation } from 'react-native-navigation';
 
+import { Colors } from '~/constants/colors';
 import Home from '~/screens/Home';
 import Onboarding from '~/screens/Onboarding';
 import Profile from '~/screens/Profile';
@@ -29,13 +30,16 @@ export const startBottomTabs = () => {
         ],
         options: {
           bottomTabs: {
-            backgroundColor: '#07182b',
+            backgroundColor: Colors.PRIMARY,
             currentTabIndex: 0,
             animate: false,
             hideShadow: false,
             titleDisplayMode: 'alwaysHide',
             elevation: 50,
             preferLargeIcons: true,
+          },
+          navigationBar: {
+            color: 'red',
           },
         },
       },
@@ -72,6 +76,9 @@ export const setDefaultOptions = () => {
   Navigation.setDefaultOptions({
     topBar: {
       visible: false,
+    },
+    navigationBar: {
+      backgroundColor: Colors.NAVIGATION_BAR_COLOR,
     },
   });
 };
